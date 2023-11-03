@@ -31,11 +31,3 @@ public class GameManager : MonoBehaviour
         Instantiate(enemyTwoPrefab, new Vector3(Random.Range(-8, 8), 6, 0), Quaternion.identity);
     }
 }
-In this script, I added a public GameObject enemyTwoPrefab; variable to hold the prefab for Enemy Two. The Start method now includes an InvokeRepeating call for creating Enemy Two at a specified interval (adjust the delay as needed). The CreateEnemyTwo method instantiates Enemy Two at a random position with a slightly lower Y coordinate to make it appear a bit downward.
-
-Make sure to assign the Enemy Two prefab to the enemyTwoPrefab variable in the Unity Editor. Adjust the position and delay values according to your requirements.
-
-
-
-
-

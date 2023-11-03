@@ -13,10 +13,8 @@ public class EnemyTwoBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Horizontal movement from left to right
         transform.Translate(new Vector3(1, 0, 0) * Time.deltaTime * 3);
 
-        // Adjust the following condition based on your scene's boundaries
         if (transform.position.x > 8f)
         {
             Destroy(this.gameObject);

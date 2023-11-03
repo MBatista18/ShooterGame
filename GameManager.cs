@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,7 +11,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("CreateEnemyOne", 1.0f, 3.0f);
-        InvokeRepeating("CreateEnemyTwo", 2.0f, 4.0f); // Adjust the delay for Enemy Two
+        InvokeRepeating("CreateEnemyTwo", 2.0f, 4.0f);
     }
 
     // Update is called once per frame

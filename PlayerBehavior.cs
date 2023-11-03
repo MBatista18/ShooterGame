@@ -1,17 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    //1. access (public or private)
-    //2. type (int, float, bool)
-    //3. name (naming conventions) they always start with a letter that is not capitalized, but you can have multiple words with no spaces and following words could be capitalized
-    //4. OPTIONAL: you can give it a value
-    //borders: 8.5 and 6.5
-
     public float speed;
     public float horizontalInput;
     public float verticalInput;
@@ -22,7 +14,7 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 4f;
+        speed = 8f;
         horizontalScreenLimit = 9.5f;
         verticalScreenLimit = 6.5f;
     }
@@ -39,7 +31,7 @@ public class PlayerBehavior : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * speed);
-        if (transform.position.x > horizontalScreenLimit || transform.position.x < -horizontalScreenLimit)
+        if (transform.position.x > horizontalScreenLimit)
         {
             transform.position = new Vector3(-horizontalScreenLimit, transform.position.y, 0);
         }
@@ -48,23 +40,23 @@ public class PlayerBehavior : MonoBehaviour
             transform.position = new Vector3(horizontalScreenLimit, transform.position.y, 0);
         }
 
-        if (transform.position.y > verticalScreenLimit)
+        if (transform.position.y > 0)
         {
-            transform.position = new Vector3(transform.position.x, -verticalScreenLimit, 0);
+            transform.position = new Vector3(transform.position.x, 0);
         }
-        else if (transform.position.y < -verticalScreenLimit)
+        else if (transform.position.y < -3)
         {
-            transform.position = new Vector3(transform.position.x, verticalScreenLimit, 0);
+            transform.position = new Vector3(transform.position.x, -3);
         }
     }
-
     void Shooting()
     {
-        //if I press SPACE, create a bullet
+        //if press SPACE, create a bullet
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //create a bullet
             Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
+
 }
